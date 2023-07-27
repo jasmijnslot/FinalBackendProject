@@ -57,22 +57,43 @@ public class SpringSecurityConfig {
                 .httpBasic().disable()
                 .cors().and()
                 .authorizeHttpRequests()
-                // Wanneer je deze uncomments, staat je hele security open. Je hebt dan alleen nog een jwt nodig.
-//                .requestMatchers("/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
                 .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/cimodules").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/cimodules/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/remotecontrollers").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/remotecontrollers/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/televisions").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/televisions/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/wallbrackets").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/wallbrackets/**").hasRole("ADMIN")
-                // Je mag meerdere paths tegelijk definieren
-                .requestMatchers("/cimodules", "/remotecontrollers", "/televisions", "/wallbrackets").hasAnyRole("ADMIN", "USER")
+                //-----------------------------dieren----------------------------------
+                .requestMatchers(HttpMethod.POST, "/dieren").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/dieren").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/dieren/{id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/dieren").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/dieren/{id}").hasRole("ADMIN")
+                //---------------------------afspraken-------------------------------
+                .requestMatchers(HttpMethod.POST, "/afspraken/{dier_id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/afspraken").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/afspraken/{id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/afspraken/{id}").hasRole("ADMIN")
+                //-----------------------------klanten------------------------------------
+                .requestMatchers(HttpMethod.POST, "/klanten").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET,"/klanten").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/klanten/{id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/klanten/{id}").hasRole("ADMIN")
+                //------------------------------medicaties-------------------------------
+                .requestMatchers(HttpMethod.POST, "/medicaties").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/medicaties").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/medicaties/{id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "medicaties/{id}").hasRole("ADMIN")
+                //--------------------------------paspoorten-------------------------------
+                .requestMatchers(HttpMethod.POST, "/paspoorten").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/paspoorten").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/paspoorten/{id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/paspoorten/{id}").hasRole("ADMIN")
+                //-------------------------------dierenartsen-----------------------------
+                .requestMatchers(HttpMethod.POST, "/dierenartsen").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/dierenartsen").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/dierenartsen/{id}").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/dierenartsen/{id}").hasRole("ADMIN")
+
+
                 .requestMatchers("/authenticated").authenticated()
                 .requestMatchers("/authenticate").permitAll()
                 .anyRequest().denyAll()
