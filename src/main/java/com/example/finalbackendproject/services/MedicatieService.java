@@ -3,24 +3,21 @@ package com.example.finalbackendproject.services;
 import com.example.finalbackendproject.dtos.MedicatieDTO;
 import com.example.finalbackendproject.models.Medicatie;
 import com.example.finalbackendproject.repositories.MedicatieRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class MedicatieService {
 
-    @Autowired
     private MedicatieRepository medicatieRepository;
 
-    public MedicatieDTO nieuweMedicatie(@RequestBody MedicatieDTO medicatieDTO){
+    public MedicatieService(MedicatieRepository medicatieRepository) {
+        this.medicatieRepository = medicatieRepository;
+    }
+
+    public MedicatieDTO nieuweMedicatie(MedicatieDTO medicatieDTO){
         Medicatie medicatie = transferDtoToMedicatie(medicatieDTO);
         medicatieRepository.save(medicatie);
         MedicatieDTO medicatieDTO1 = transferMedicatieToDTO(medicatie);
@@ -37,7 +34,7 @@ public class MedicatieService {
         return medicatieDTOS;
     }
 
-    public MedicatieDTO medicatiePerId(@PathVariable Long id) {
+    public MedicatieDTO medicatiePerId(Long id) {
         Optional<Medicatie> optionalMedicatie = medicatieRepository.findById(id);
         if(optionalMedicatie.isEmpty()){
             throw new RuntimeException();
@@ -47,7 +44,7 @@ public class MedicatieService {
         return medicatieDTO;
     }
 
-    public String verwijderMedicatie(@PathVariable Long id) {
+    public String verwijderMedicatie(Long id) {
         medicatieRepository.deleteById(id);
         return "Medicatie is verwijderd";
     }

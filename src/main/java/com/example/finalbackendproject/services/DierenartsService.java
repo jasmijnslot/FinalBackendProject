@@ -3,24 +3,22 @@ package com.example.finalbackendproject.services;
 import com.example.finalbackendproject.dtos.DierenartsDTO;
 import com.example.finalbackendproject.models.Dierenarts;
 import com.example.finalbackendproject.repositories.DierenartsRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+
 public class DierenartsService {
 
-    @Autowired
     private DierenartsRepository dierenartsRepository;
 
-    public DierenartsDTO nieuweDierenarts(@RequestBody DierenartsDTO dierenartsDTO){
+    public DierenartsService(DierenartsRepository dierenartsRepository) {
+        this.dierenartsRepository = dierenartsRepository;
+    }
+
+    public DierenartsDTO nieuweDierenarts(DierenartsDTO dierenartsDTO){
         Dierenarts dierenarts = transferDtoToDierenarts(dierenartsDTO);
         dierenartsRepository.save(dierenarts);
         DierenartsDTO dierenartsDTO1 = transferDierenartsToDto(dierenarts);
@@ -37,7 +35,7 @@ public class DierenartsService {
         return dierenartsDTOS;
     }
 
-    public DierenartsDTO dierenartsPerId(@PathVariable Long id){
+    public DierenartsDTO dierenartsPerId(Long id){
         Optional<Dierenarts> optionalDierenarts = dierenartsRepository.findById(id);
         if(optionalDierenarts.isEmpty()){
             throw new RuntimeException();
@@ -47,7 +45,7 @@ public class DierenartsService {
         return dierenartsDTO;
     }
 
-    public String verwijderDierenarts(@PathVariable Long id){
+    public String verwijderDierenarts(Long id){
         dierenartsRepository.deleteById(id);
         return "Dierenarts is verwijderd";
     }

@@ -1,27 +1,36 @@
 package com.example.finalbackendproject.services;
 import com.example.finalbackendproject.dtos.AfspraakDTO;
 import com.example.finalbackendproject.models.Afspraak;
+import com.example.finalbackendproject.models.Dier;
 import com.example.finalbackendproject.repositories.AfspraakRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.finalbackendproject.repositories.DierRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
-@RequiredArgsConstructor
 public class AfspraakService {
 
-    @Autowired
-    private AfspraakRepository afspraakRepository;
 
-    public AfspraakDTO nieuweAfspraak(@RequestBody AfspraakDTO afspraakDTO) {
+    private final AfspraakRepository afspraakRepository;
+    private final DierRepository dierRepository;
+
+    public AfspraakService(AfspraakRepository afspraakRepository, DierRepository dierRepository) {
+        this.afspraakRepository = afspraakRepository;
+        this.dierRepository = dierRepository;
+    }
+
+    public AfspraakDTO nieuweAfspraak(AfspraakDTO afspraakDTO, Long dier_id) {
+        Optional<Dier> optionalDier = dierRepository.findById(dier_id);
+        if(optionalDier.isEmpty()){
+            throw new RuntimeException();
+        }
+        Dier dier = optionalDier.get();
         Afspraak afspraak = transferDtoToAfspraak(afspraakDTO);
+        afspraak.setDier(dier);
         afspraakRepository.save(afspraak);
         AfspraakDTO afspraakDTO1 = transferAfspraakToDto(afspraak);
 
@@ -58,7 +67,7 @@ public class AfspraakService {
         AfspraakDTO afspraakDTO = new AfspraakDTO();
 
         if (afspraak.getDatum() != null) {
-            afspraakDTO.setDatum(afspraakDTO.getDatum());
+            afspraakDTO.setDatum(afspraak.getDatum());
         }
         if (afspraak.getReden() != null) {
             afspraakDTO.setReden(afspraak.getReden());

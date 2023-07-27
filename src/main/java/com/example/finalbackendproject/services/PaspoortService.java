@@ -19,13 +19,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class PaspoortService {
 
-    @Autowired
+
     private PaspoortRepository paspoortRepository;
 
-    public PaspoortDTO nieuwPaspoort(@RequestBody PaspoortDTO paspoortDTO) {
+    public PaspoortService(PaspoortRepository paspoortRepository) {
+        this.paspoortRepository = paspoortRepository;
+    }
+
+    public PaspoortDTO nieuwPaspoort(PaspoortDTO paspoortDTO) {
         Paspoort paspoort = transferDtoToPaspoort(paspoortDTO);
         paspoortRepository.save(paspoort);
         PaspoortDTO paspoortDTO1 = transferPaspoortToDto(paspoort);
@@ -42,7 +45,7 @@ public class PaspoortService {
         return paspoortDTOS;
     }
 
-    public PaspoortDTO paspoortPerId(@PathVariable Long id) {
+    public PaspoortDTO paspoortPerId(Long id) {
         Optional<Paspoort> optionalPaspoort = paspoortRepository.findById(id);
         if(optionalPaspoort.isEmpty()){
             throw new RuntimeException();
@@ -52,7 +55,7 @@ public class PaspoortService {
         return paspoortDTO;
     }
 
-    public String verwijderPaspoort(@PathVariable Long id) {
+    public String verwijderPaspoort(Long id) {
         paspoortRepository.deleteById(id);
         return "Paspoort is verwijderd";
     }

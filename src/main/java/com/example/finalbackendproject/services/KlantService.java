@@ -3,24 +3,22 @@ package com.example.finalbackendproject.services;
 import com.example.finalbackendproject.dtos.KlantDTO;
 import com.example.finalbackendproject.models.Klant;
 import com.example.finalbackendproject.repositories.KlantRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class KlantService {
 
-    @Autowired
+
     private KlantRepository klantRepository;
 
-    public KlantDTO nieuweKlant(@RequestBody KlantDTO klantDTO){
+    public KlantService(KlantRepository klantRepository) {
+        this.klantRepository = klantRepository;
+    }
+
+    public KlantDTO nieuweKlant(KlantDTO klantDTO){
         Klant klant = transferDtoToKlant(klantDTO);
         klantRepository.save(klant);
         KlantDTO klantDTO1 = transferKlantToDto(klant);
@@ -36,7 +34,7 @@ public class KlantService {
         return klantenDTOs;
     }
 
-    public KlantDTO klantPerId(@PathVariable Long id){
+    public KlantDTO klantPerId(Long id){
         Optional<Klant> optionalKlant = klantRepository.findById(id);
         if(optionalKlant.isEmpty()){
             throw new RuntimeException();
@@ -46,7 +44,7 @@ public class KlantService {
         return klantDTO;
     }
 
-    public String verwijderKLant(@PathVariable Long id){
+    public String verwijderKLant(Long id){
         klantRepository.deleteById(id);
         return "Klant is verwijderd";
     }
