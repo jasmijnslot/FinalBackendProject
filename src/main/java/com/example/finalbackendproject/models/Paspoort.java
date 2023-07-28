@@ -1,5 +1,6 @@
 package com.example.finalbackendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,10 @@ public class Paspoort {
 
     @Column(name = "nummer")
     private String nummer;
+
+    @OneToOne
+    @JsonIgnore
+    private Dier dier;
 
     //@Column(name = "contentType")
     //private String contentType;

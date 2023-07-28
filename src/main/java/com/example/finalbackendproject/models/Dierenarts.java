@@ -1,7 +1,10 @@
 package com.example.finalbackendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -24,5 +27,10 @@ public class Dierenarts {
 
     @Column(name = "specialisatie")
     private String specialisatie;
+
+    @OneToMany(mappedBy = "afspraak")
+    @JsonIgnore
+    private List<Afspraak> afspraak;
+
 }
 

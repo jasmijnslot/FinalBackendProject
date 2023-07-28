@@ -35,5 +35,17 @@ public class Dier {
     @JsonIgnore
     private List<Afspraak> afspraak;
 
+    @ManyToOne
+    @JsonIgnore
+    private Klant klant;
+
+    @OneToOne
+    @JsonIgnore
+    private Paspoort paspoort;
+
+    @ManyToMany
+    @JsonIgnore
+    private List<Medicatie> medicatie;
+
 }
 

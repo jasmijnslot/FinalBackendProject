@@ -1,7 +1,10 @@
 package com.example.finalbackendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -24,5 +27,9 @@ public class Medicatie {
 
     @Column(name = "opmerking")
     private String opmerking;
+
+    @ManyToMany
+    @JsonIgnore
+    private List<Dier> dier;
 }
 
