@@ -76,10 +76,19 @@ public class DierService {
             dierDto.setSoort(dier.getSoort());
         }
         if (dier.getAfspraak() != null) {
-            dierDto.setAfspraak(dier.getAfspraak());
+            dierDto.setAfspraken(dier.getAfspraak());
         }
         if (dier.getId() != null) {
             dierDto.setId(dier.getId());
+        }
+        if(dier.getKlant() != null){
+            dierDto.setKlant(dier.getKlant());
+        }
+        if(dier.getMedicaties() != null){
+           dierDto.setMedicaties(dier.getMedicaties());
+        }
+        if(dier.getPaspoort() != null){
+            dierDto.setPaspoort(dier.getPaspoort());
         }
         return dierDto;
     }
@@ -90,7 +99,10 @@ public class DierService {
         dier.setNaam(dierDto.getNaam());
         dier.setGeboorteDatum(dierDto.getGeboorteDatum());
         dier.setSoort(dierDto.getSoort());
-        dier.setAfspraak(dierDto.getAfspraak());
+        dier.setAfspraak(dierDto.getAfspraken());
+        dier.setMedicaties(dierDto.getMedicaties());
+        dier.setKlant(dierDto.getKlant());
+        dier.setPaspoort(dierDto.getPaspoort());
 
         return dier;
     }

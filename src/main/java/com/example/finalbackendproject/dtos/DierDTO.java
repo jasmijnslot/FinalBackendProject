@@ -25,9 +25,9 @@ public class DierDTO {
     @NotBlank
     private String soort;
 
-    private List<Afspraak> afspraak;
+    private List<Afspraak> afspraken;
 
-    private List<Medicatie> medicatie;
+    private List<Medicatie> medicaties;
 
     private Klant klant;
 

@@ -91,6 +91,12 @@ public class AfspraakService {
         if (afspraak.getId() != null) {
             afspraakDTO.setId(afspraak.getId());
         }
+        if(afspraak.getKlant() != null){
+            afspraakDTO.setKlant(afspraak.getKlant());
+        }
+        if(afspraak.getDierenarts() != null){
+            afspraakDTO.setDierenarts(afspraak.getDierenarts());
+        }
         return afspraakDTO;
     }
 
@@ -101,6 +107,8 @@ public class AfspraakService {
         afspraak.setDier(afspraakDTO.getDier());
         afspraak.setReden(afspraakDTO.getReden());
         afspraak.setId(afspraakDTO.getId());
+        afspraak.setKlant(afspraakDTO.getKlant());
+        afspraak.setDierenarts(afspraakDTO.getDierenarts());
 
         return afspraak;
     }

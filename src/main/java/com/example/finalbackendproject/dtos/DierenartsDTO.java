@@ -24,6 +24,6 @@ public class DierenartsDTO {
     @NotBlank
     private String specialisatie;
 
-    private List<Afspraak> afspraak;
+    private List<Afspraak> afspraken;
 }
 

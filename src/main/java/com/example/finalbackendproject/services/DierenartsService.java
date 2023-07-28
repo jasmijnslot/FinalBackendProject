@@ -78,6 +78,9 @@ public class DierenartsService {
         if (dierenarts.getTelefoonNr() != 0) {
             dierenartsDTO.setTelefoonNr(dierenarts.getTelefoonNr());
         }
+        if(dierenarts.getAfspraken() != null){
+            dierenartsDTO.setAfspraken(dierenarts.getAfspraken());
+        }
         return dierenartsDTO;
     }
 
@@ -88,6 +91,7 @@ public class DierenartsService {
         dierenarts.setAchterNaam(dierenartsDTO.getAchterNaam());
         dierenarts.setId(dierenartsDTO.getId());
         dierenarts.setSpecialisatie(dierenartsDTO.getSpecialisatie());
+        dierenarts.setAfspraken(dierenartsDTO.getAfspraken());
 
         return dierenarts;
     }

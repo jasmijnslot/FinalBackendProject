@@ -108,6 +108,9 @@ public class PaspoortService {
         if(paspoort.getId() != null){
             paspoortDTO.setId(paspoort.getId());
         }
+        if(paspoort.getDier() != null){
+            paspoortDTO.setDier(paspoort.getDier());
+        }
         return paspoortDTO;
     }
 

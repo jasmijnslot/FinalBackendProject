@@ -82,6 +82,13 @@ public class KlantService {
         if(klant.getTelefoonNr() != null){
             klantDTO.setTelefoonNr(klant.getTelefoonNr());
         }
+        if(klant.getAfspraken() != null){
+            klantDTO.setAfspraken(klant.getAfspraken());
+        }
+        if(klant.getDieren() != null){
+            klantDTO.setDieren(klant.getDieren());
+        }
+
         return klantDTO;
     }
 
@@ -93,6 +100,7 @@ public class KlantService {
         klant.setId(klantDTO.getId());
         klant.setPostcode(klantDTO.getPostcode());
         klant.setTelefoonNr(klantDTO.getTelefoonNr());
+        klant.setDieren(klantDTO.getDieren());
 
         return klant;
     }

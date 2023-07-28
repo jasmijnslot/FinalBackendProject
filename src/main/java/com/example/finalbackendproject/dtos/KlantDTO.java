@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -25,9 +27,9 @@ public class KlantDTO {
     @NotBlank
     private String email;
 
-    private Dier dier;
+    private List<Dier> dieren;
 
-    private Afspraak afspraak;
+    private List<Afspraak> afspraken;
 
 }
 
