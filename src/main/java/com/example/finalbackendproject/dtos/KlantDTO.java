@@ -1,11 +1,11 @@
 package com.example.finalbackendproject.dtos;
 
+import com.example.finalbackendproject.models.Afspraak;
+import com.example.finalbackendproject.models.Dier;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-
-import java.util.Date;
 
 @Getter
 @Setter
@@ -24,6 +24,10 @@ public class KlantDTO {
 
     @NotBlank
     private String email;
+
+    private Dier dier;
+
+    private Afspraak afspraak;
 
 }
 

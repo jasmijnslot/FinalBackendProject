@@ -1,6 +1,8 @@
 package com.example.finalbackendproject.dtos;
 
 import com.example.finalbackendproject.models.Dier;
+import com.example.finalbackendproject.models.Dierenarts;
+import com.example.finalbackendproject.models.Klant;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +22,12 @@ public class AfspraakDTO {
 
     @NotBlank
     private Dier dier;
+
+    @NotBlank
+    private Dierenarts dierenarts;
+
+    @NotBlank
+    private Klant klant;
 
 }
 

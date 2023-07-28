@@ -1,5 +1,6 @@
 package com.example.finalbackendproject.dtos;
 
+import com.example.finalbackendproject.models.Dier;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,10 +20,12 @@ public class PaspoortDTO {
     @NotBlank
     private String nummer;
 
-    @NotBlank
-    private String contentType;
+    private Dier dier;
 
-    private byte[] paspoortScan;
+    //@NotBlank
+    //private String contentType;
+
+    //private byte[] paspoortScan;
 
 
 }
