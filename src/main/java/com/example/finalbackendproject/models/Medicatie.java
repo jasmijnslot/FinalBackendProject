@@ -29,7 +29,6 @@ public class Medicatie {
     private String opmerking;
 
     @ManyToMany
-    @JsonIgnore
-    private List<Dier> dier;
+    private List<Dier> dieren;
 }
 

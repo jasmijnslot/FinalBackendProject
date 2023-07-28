@@ -31,13 +31,10 @@ public class Klant {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "dier")
-    @JsonIgnore
-    private List<Dier> dier;
+    @OneToMany(mappedBy = "klant")
+    private List<Dier> dieren;
 
-    @OneToMany(mappedBy = "afspraak")
-    @JsonIgnore
-    private List<Afspraak> afspraak;
+
 
 
 }

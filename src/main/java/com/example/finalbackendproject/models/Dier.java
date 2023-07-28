@@ -35,17 +35,16 @@ public class Dier {
     @JsonIgnore
     private List<Afspraak> afspraak;
 
-    @ManyToOne
-    @JsonIgnore
-    private Klant klant;
-
-    @OneToOne
+    @OneToOne(mappedBy = "dier")
     @JsonIgnore
     private Paspoort paspoort;
 
+    @ManyToOne
+    private Klant klant;
+
     @ManyToMany
-    @JsonIgnore
-    private List<Medicatie> medicatie;
+    private List<Medicatie> medicaties;
+
 
 }
 

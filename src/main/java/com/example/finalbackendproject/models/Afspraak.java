@@ -29,14 +29,4 @@ public class Afspraak {
     @JoinColumn(name = "dier_id")
     private Dier dier;
 
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "klant_id")
-    private Klant klant;
-
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "dierenarts_id")
-    private Dierenarts dierenarts;
-
 }

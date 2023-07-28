@@ -26,7 +26,6 @@ public class Paspoort {
     private String nummer;
 
     @OneToOne
-    @JsonIgnore
     private Dier dier;
 
     //@Column(name = "contentType")
