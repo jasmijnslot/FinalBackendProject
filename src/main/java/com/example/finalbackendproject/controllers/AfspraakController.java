@@ -35,5 +35,9 @@ public class AfspraakController {
         return afspraakService.verwijderAfspraak(id);
     }
 
+    @PutMapping("/{id}")
+    public AfspraakDTO updateAfspraak(@RequestBody AfspraakDTO afspraakDTO, @PathVariable Long id){
+        return afspraakService.updateAfspraak(afspraakDTO, id);
+    }
 
 }

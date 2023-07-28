@@ -36,5 +36,10 @@ public class DierenartsController {
         return dierenartsService.verwijderDierenarts(id);
     }
 
+    @PutMapping("/dierenartsen/{id}")
+    public DierenartsDTO updateDierenarts(@RequestBody DierenartsDTO dierenartsDTO, @PathVariable Long id){
+        return dierenartsService.updateDierenarts(dierenartsDTO, id);
+    }
+
 }
 

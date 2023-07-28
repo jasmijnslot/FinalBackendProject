@@ -50,6 +50,11 @@ public class PaspoortController {
         return paspoortService.verwijderPaspoort(id);
     }
 
+    @PutMapping("/paspoorten/{id}")
+    public PaspoortDTO updatePaspoort(@RequestBody PaspoortDTO paspoortDTO, @PathVariable Long id){
+        return paspoortService.updatePaspoort(paspoortDTO, id);
+    }
+
 
     //@PostMapping("/paspoorten/uploadScan")
     //public Response uploadFile(@RequestParam("file") MultipartFile file) {

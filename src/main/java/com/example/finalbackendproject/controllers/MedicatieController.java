@@ -36,5 +36,10 @@ public class MedicatieController {
         return medicatieService.verwijderMedicatie(id);
     }
 
+    @PutMapping("/medicaties/{id}")
+    public MedicatieDTO updateMedicatie(@RequestBody MedicatieDTO medicatieDTO, @PathVariable Long id){
+        return medicatieService.updateMedicatie(medicatieDTO, id);
+    }
+
 }
 

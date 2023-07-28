@@ -37,7 +37,10 @@ public class KlantController {
     }
 
 
-
+    @PutMapping("/klanten/{id}")
+    public KlantDTO updateKlant(@RequestBody KlantDTO klantDTO, @PathVariable Long id){
+        return klantService.updateKlant(klantDTO, id);
+    }
 
 
 
