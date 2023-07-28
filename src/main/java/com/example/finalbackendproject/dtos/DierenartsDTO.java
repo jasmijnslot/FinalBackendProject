@@ -14,7 +14,7 @@ public class DierenartsDTO {
     private Long id;
 
     @NotBlank
-    private String Achternaam;
+    private String achterNaam;
 
     @NotBlank
     private int telefoonNr;

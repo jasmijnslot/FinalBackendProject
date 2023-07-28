@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,8 +22,7 @@ public class DierDTO {
     @NotBlank
     private String soort;
 
-    @NotBlank
-    private Afspraak afspraak;
+    private List<Afspraak> afspraak;
 
 
 

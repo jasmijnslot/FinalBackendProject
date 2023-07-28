@@ -1,6 +1,6 @@
 package com.example.finalbackendproject.controllers;
 
-import com.example.finalbackendproject.Response;
+//import com.example.finalbackendproject.Response;
 import com.example.finalbackendproject.dtos.PaspoortDTO;
 import com.example.finalbackendproject.models.Paspoort;
 import com.example.finalbackendproject.services.PaspoortService;
@@ -51,28 +51,28 @@ public class PaspoortController {
     }
 
 
-    @PostMapping("/paspoorten/uploadScan")
-    public Response uploadFile(@RequestParam("file") MultipartFile file) {
-        Paspoort nummer = paspoortService.paspoortOpslag(file);
+    //@PostMapping("/paspoorten/uploadScan")
+    //public Response uploadFile(@RequestParam("file") MultipartFile file) {
+    //    Paspoort nummer = paspoortService.paspoortOpslag(file);
 
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/uploadScan/")
-                .path(nummer.getNummer())
-                .toUriString();
+    //    String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+     //           .path("/uploadScan/")
+    //            .path(nummer.getNummer())
+    //            .toUriString();
 
-        return new Response(nummer.getNummer(), fileDownloadUri,
-                file.getContentType(), file.getSize());
-    }
+    //    return new Response(nummer.getNummer(), fileDownloadUri,
+    //            file.getContentType(), file.getSize());
+  //  }
 
-    @GetMapping("/paspoorten/downloadFile/{nummer:.+}")
-    public ResponseEntity < Resource > downloadFile(@PathVariable Long id, HttpServletRequest request) {
-        Paspoort paspoort = paspoortService.krijgPaspoort(id);
+   // @GetMapping("/paspoorten/downloadFile/{nummer:.+}")
+   // public ResponseEntity < Resource > downloadFile(@PathVariable Long id, HttpServletRequest request) {
+   //     Paspoort paspoort = paspoortService.krijgPaspoort(id);
 
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(paspoort.getContentType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + paspoort.getNummer() + "\"")
-                .body(new ByteArrayResource(paspoort.getPaspoortScan()));
-    }
+    //    return ResponseEntity.ok()
+     //           .contentType(MediaType.parseMediaType(paspoort.getContentType()))
+     //           .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + paspoort.getNummer() + "\"")
+     //           .body(new ByteArrayResource(paspoort.getPaspoortScan()));
+   // }
 
 
 

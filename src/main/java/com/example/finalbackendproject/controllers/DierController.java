@@ -37,4 +37,9 @@ public class DierController {
         return dierService.verwijderDier(id);
     }
 
+    @PutMapping("/dieren/{id}")
+    public DierDTO updateDier(@RequestBody DierDTO dierDTO, @PathVariable Long id){
+        return dierService.updateDier(dierDTO, id);
+    }
+
 }

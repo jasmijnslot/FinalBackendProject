@@ -1,5 +1,6 @@
 package com.example.finalbackendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
@@ -17,15 +18,15 @@ public class Afspraak {
     @Column(name = "id")
     private Long id;
 
-
     @Column(name = "datum")
     private Date datum;
 
     @Column(name = "reden")
     private String reden;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "dier_id")
     private Dier dier;
 
 

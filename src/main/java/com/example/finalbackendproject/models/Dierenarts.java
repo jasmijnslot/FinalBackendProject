@@ -17,7 +17,7 @@ public class Dierenarts {
     private Long id;
 
     @Column(name = "achterNaam")
-    private String Achternaam;
+    private String achterNaam;
 
     @Column(name = "telefoonNr")
     private int telefoonNr;

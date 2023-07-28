@@ -53,8 +53,8 @@ public class DierenartsService {
     private DierenartsDTO transferDierenartsToDto(Dierenarts dierenarts) {
         DierenartsDTO dierenartsDTO = new DierenartsDTO();
 
-        if (dierenarts.getAchternaam() != null) {
-            dierenartsDTO.setAchternaam(dierenarts.getAchternaam());
+        if (dierenarts.getAchterNaam() != null) {
+            dierenartsDTO.setAchterNaam(dierenarts.getAchterNaam());
         }
         if (dierenarts.getId() != null) {
             dierenartsDTO.setId(dierenarts.getId());
@@ -72,7 +72,7 @@ public class DierenartsService {
         Dierenarts dierenarts = new Dierenarts();
 
         dierenarts.setTelefoonNr(dierenartsDTO.getTelefoonNr());
-        dierenarts.setAchternaam(dierenartsDTO.getAchternaam());
+        dierenarts.setAchterNaam(dierenartsDTO.getAchterNaam());
         dierenarts.setId(dierenartsDTO.getId());
         dierenarts.setSpecialisatie(dierenartsDTO.getSpecialisatie());
 

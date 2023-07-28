@@ -30,6 +30,7 @@ public class KlantService {
         List<KlantDTO> klantenDTOs = new ArrayList<>();
         for( Klant klant:klanten) {
             KlantDTO klantDTO = transferKlantToDto(klant);
+            klantenDTOs.add(klantDTO);
         }
         return klantenDTOs;
     }

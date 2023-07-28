@@ -56,10 +56,10 @@ public class MedicatieService {
             medicatieDTO.setDosering(medicatie.getDosering());
         }
         if(medicatie.getOpmerking() != null){
-            medicatieDTO.setDosering(medicatie.getDosering());
+            medicatieDTO.setOpmerking(medicatie.getOpmerking());
         }
         if(medicatie.getNaam() != null){
-            medicatieDTO.setId(medicatie.getId());
+            medicatieDTO.setNaam(medicatie.getNaam());
         }
         if(medicatie.getId() != null){
             medicatieDTO.setId(medicatie.getId());

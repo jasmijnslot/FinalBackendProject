@@ -24,17 +24,17 @@ public class Paspoort {
     @Column(name = "nummer")
     private String nummer;
 
-    @Column(name = "contentType")
-    private String contentType;
+    //@Column(name = "contentType")
+    //private String contentType;
 
-    @Lob
-    private byte[] paspoortScan;
+   // @Lob
+    //private byte[] paspoortScan;
 
 
-    public Paspoort(String nummer, String contentType, byte[] paspoortScan) {
-        this.nummer = nummer;
-        this.contentType = contentType;
-        this.paspoortScan = paspoortScan;
-    }
+   // public Paspoort(String nummer, String contentType, byte[] paspoortScan) {
+   //     this.nummer = nummer;
+    //    this.contentType = contentType;
+    //    this.paspoortScan = paspoortScan;
+   // }
 }
 

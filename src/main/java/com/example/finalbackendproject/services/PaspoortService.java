@@ -60,37 +60,37 @@ public class PaspoortService {
         return "Paspoort is verwijderd";
     }
 
-    public Paspoort paspoortOpslag(MultipartFile file) {
-        String nummer = StringUtils.cleanPath(file.getOriginalFilename());
-        try {
-            Paspoort paspoort = new Paspoort(nummer, file.getContentType(), file.getBytes());
-            return paspoortRepository.save(paspoort);
+    //public Paspoort paspoortOpslag(MultipartFile file) {
+    //    String nummer = StringUtils.cleanPath(file.getOriginalFilename());
+     //   try {
+    //        Paspoort paspoort = new Paspoort(nummer, file.getContentType(), file.getBytes());
+    //        return paspoortRepository.save(paspoort);
 
-        } catch (IOException ex) {
-            throw new FileStorageException("Kon niet opgeslagen worden.", ex);
-        }
+     //   } catch (IOException ex) {
+     //       throw new FileStorageException("Kon niet opgeslagen worden.", ex);
+     //   }
 
-    }
+    //}
 
-    public Paspoort krijgPaspoort(Long id) {
-        return paspoortRepository.findById(id)
-                .orElse(null);
-    }
+    //public Paspoort krijgPaspoort(Long id) {
+    //    return paspoortRepository.findById(id)
+     //           .orElse(null);
+   // }
     private PaspoortDTO transferPaspoortToDto(Paspoort paspoort){
         PaspoortDTO paspoortDTO = new PaspoortDTO();
 
-        if(paspoort.getPaspoortScan() != null){
-            paspoortDTO.setPaspoortScan(paspoort.getPaspoortScan());
-        }
+      //  if(paspoort.getPaspoortScan() != null){
+       //     paspoortDTO.setPaspoortScan(paspoort.getPaspoortScan());
+       // }
         if(paspoort.getAfgifteDatum() != null){
             paspoortDTO.setAfgifteDatum(paspoort.getAfgifteDatum());
         }
         if(paspoort.getNummer() != null){
-            paspoortDTO.setNummer(paspoortDTO.getNummer());
+            paspoortDTO.setNummer(paspoort.getNummer());
         }
-        if(paspoort.getContentType() != null){
-            paspoortDTO.setContentType(paspoort.getContentType());
-        }
+    //    if(paspoort.getContentType() != null){
+    //        paspoortDTO.setContentType(paspoort.getContentType());
+    //    }
         if(paspoort.getId() != null){
             paspoortDTO.setId(paspoort.getId());
         }
@@ -101,10 +101,10 @@ public class PaspoortService {
         Paspoort paspoort = new Paspoort();
 
         paspoort.setAfgifteDatum(paspoortDTO.getAfgifteDatum());
-        paspoort.setPaspoortScan(paspoortDTO.getPaspoortScan());
+    //    paspoort.setPaspoortScan(paspoortDTO.getPaspoortScan());
         paspoort.setId(paspoortDTO.getId());
         paspoort.setNummer(paspoortDTO.getNummer());
-        paspoort.setContentType(paspoortDTO.getContentType());
+     //   paspoort.setContentType(paspoortDTO.getContentType());
 
         return paspoort;
     }

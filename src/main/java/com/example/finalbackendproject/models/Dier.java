@@ -1,12 +1,16 @@
 package com.example.finalbackendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -27,8 +31,9 @@ public class Dier {
     @Column(name = "soort")
     private String soort;
 
-    @OneToOne(mappedBy = "dier")
-    private Afspraak afspraak;
+    @OneToMany(mappedBy = "dier")
+    @JsonIgnore
+    private List<Afspraak> afspraak;
 
 }
 
