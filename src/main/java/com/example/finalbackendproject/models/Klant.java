@@ -34,7 +34,8 @@ public class Klant {
     @OneToMany(mappedBy = "klant")
     private List<Dier> dieren;
 
-
+    @OneToMany(mappedBy ="klant")
+    private List<Afspraak> afspraken;
 
 
 }

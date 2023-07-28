@@ -29,4 +29,9 @@ public class Afspraak {
     @JoinColumn(name = "dier_id")
     private Dier dier;
 
+    @ManyToOne
+    private Dierenarts dierenarts;
+
+    @ManyToOne
+    private Klant klant;
 }

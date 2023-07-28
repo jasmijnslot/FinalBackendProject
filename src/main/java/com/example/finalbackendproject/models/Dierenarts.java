@@ -28,9 +28,8 @@ public class Dierenarts {
     @Column(name = "specialisatie")
     private String specialisatie;
 
-    @OneToMany(mappedBy = "afspraak")
-    @JsonIgnore
-    private List<Afspraak> afspraak;
+    @OneToMany(mappedBy = "dierenarts")
+    private List<Afspraak> afspraken;
 
 }
 
