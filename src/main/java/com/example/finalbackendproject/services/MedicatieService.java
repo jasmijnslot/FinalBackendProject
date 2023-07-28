@@ -49,6 +49,19 @@ public class MedicatieService {
         return "Medicatie is verwijderd";
     }
 
+    public MedicatieDTO updateMedicatie(MedicatieDTO medicatieDTO, Long id){
+        Optional<Medicatie> optionalMedicatie = medicatieRepository.findById(id);
+        if(optionalMedicatie.isEmpty()){
+            throw new RuntimeException();
+        }
+        Medicatie medicatie = optionalMedicatie.get();
+        medicatie.setOpmerking(medicatieDTO.getOpmerking());
+        medicatie.setDosering(medicatieDTO.getDosering());
+        medicatie.setNaam(medicatieDTO.getNaam());
+        medicatie = medicatieRepository.save(medicatie);
+        return transferMedicatieToDTO(medicatie);
+    }
+
     private MedicatieDTO transferMedicatieToDTO(Medicatie medicatie){
         MedicatieDTO medicatieDTO = new MedicatieDTO();
 

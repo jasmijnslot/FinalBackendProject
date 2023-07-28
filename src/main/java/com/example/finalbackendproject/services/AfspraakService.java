@@ -62,6 +62,19 @@ public class AfspraakService {
         return "afspraak is verwijderd";
     }
 
+    public AfspraakDTO updateAfspraak(AfspraakDTO afspraakDTO, Long id){
+        Optional<Afspraak> optionalAfspraak = afspraakRepository.findById(id);
+        if(optionalAfspraak.isEmpty()) {
+            throw new RuntimeException();
+        }
+        Afspraak afspraak = optionalAfspraak.get();
+        afspraak.setDatum(afspraakDTO.getDatum());
+        afspraak.setReden(afspraakDTO.getReden());
+        afspraak.setDier(afspraakDTO.getDier());
+        afspraak = afspraakRepository.save(afspraak);
+        return transferAfspraakToDto(afspraak);
+    }
+
 
     private AfspraakDTO transferAfspraakToDto(Afspraak afspraak) {
         AfspraakDTO afspraakDTO = new AfspraakDTO();

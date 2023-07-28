@@ -50,6 +50,20 @@ public class KlantService {
         return "Klant is verwijderd";
     }
 
+    public KlantDTO updateKlant(KlantDTO klantDTO, Long id){
+        Optional<Klant> optionalKlant = klantRepository.findById(id);
+        if(optionalKlant.isEmpty()){
+            throw new RuntimeException();
+        }
+        Klant klant = optionalKlant.get();
+        klant.setTelefoonNr(klantDTO.getTelefoonNr());
+        klant.setAchterNaam(klantDTO.getAchterNaam());
+        klant.setEmail(klantDTO.getEmail());
+        klant.setPostcode(klantDTO.getPostcode());
+        klant = klantRepository.save(klant);
+        return transferKlantToDto(klant);
+    }
+
     private KlantDTO transferKlantToDto(Klant klant){
         KlantDTO klantDTO = new KlantDTO();
 

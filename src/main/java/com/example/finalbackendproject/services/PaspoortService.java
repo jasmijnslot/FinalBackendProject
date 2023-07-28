@@ -1,11 +1,13 @@
 package com.example.finalbackendproject.services;
 
+import com.example.finalbackendproject.dtos.AfspraakDTO;
 import com.example.finalbackendproject.dtos.PaspoortDTO;
 import com.example.finalbackendproject.exceptions.FileStorageException;
 import com.example.finalbackendproject.models.Paspoort;
 import com.example.finalbackendproject.repositories.PaspoortRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,6 +60,18 @@ public class PaspoortService {
     public String verwijderPaspoort(Long id) {
         paspoortRepository.deleteById(id);
         return "Paspoort is verwijderd";
+    }
+
+    public PaspoortDTO updatePaspoort(PaspoortDTO paspoortDTO, Long id){
+        Optional<Paspoort> optionalPaspoort = paspoortRepository.findById(id);
+        if(optionalPaspoort.isEmpty()){
+            throw new RuntimeException();
+        }
+        Paspoort paspoort = optionalPaspoort.get();
+        paspoort.setAfgifteDatum(paspoortDTO.getAfgifteDatum());
+        paspoort.setNummer(paspoortDTO.getNummer());
+        paspoort = paspoortRepository.save(paspoort);
+        return transferPaspoortToDto(paspoort);
     }
 
     //public Paspoort paspoortOpslag(MultipartFile file) {

@@ -50,6 +50,19 @@ public class DierenartsService {
         return "Dierenarts is verwijderd";
     }
 
+    public DierenartsDTO updateDierenarts(DierenartsDTO dierenartsDTO, Long id){
+        Optional<Dierenarts> optionalDierenarts = dierenartsRepository.findById(id);
+        if(optionalDierenarts.isEmpty()){
+            throw new RuntimeException();
+        }
+        Dierenarts dierenarts = optionalDierenarts.get();
+        dierenarts.setAchterNaam(dierenartsDTO.getAchterNaam());
+        dierenarts.setSpecialisatie(dierenartsDTO.getSpecialisatie());
+        dierenarts.setTelefoonNr(dierenartsDTO.getTelefoonNr());
+        dierenarts = dierenartsRepository.save(dierenarts);
+        return transferDierenartsToDto(dierenarts);
+    }
+
     private DierenartsDTO transferDierenartsToDto(Dierenarts dierenarts) {
         DierenartsDTO dierenartsDTO = new DierenartsDTO();
 
