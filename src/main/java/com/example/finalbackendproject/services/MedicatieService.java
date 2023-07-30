@@ -77,9 +77,9 @@ public class MedicatieService {
         if(medicatie.getId() != null){
             medicatieDTO.setId(medicatie.getId());
         }
-       // if(medicatie.getDier() != null){
-       //     medicatieDTO.setDier(medicatie.getDier());
-       // }
+        if(medicatie.getDieren() != null){
+           medicatieDTO.setDieren(medicatie.getDieren());
+        }
         return medicatieDTO;
     }
 

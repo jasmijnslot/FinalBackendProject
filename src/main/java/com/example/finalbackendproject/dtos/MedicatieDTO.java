@@ -24,7 +24,7 @@ public class MedicatieDTO {
     @NotBlank
     private String opmerking;
 
-    private List<Dier> dier;
+    private List<Dier> dieren;
 
 
 }
